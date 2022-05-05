@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
-    private static int id = 0;
+
 
     public UserDaoJDBCImpl() {
 
@@ -18,7 +18,7 @@ public class UserDaoJDBCImpl implements UserDao {
         try (Connection con = Util.connectToDB()) {
             Statement statement = con.createStatement();
             String SQL = "CREATE TABLE  User" +
-                    "(id INTEGER not NULL, " +
+                    "(id INTEGER not NULL AUTO_INCREMENT, " +
                     " name VARCHAR(255), " +
                     " lastName VARCHAR(255), " +
                     " age INTEGER, " +
@@ -40,11 +40,10 @@ public class UserDaoJDBCImpl implements UserDao {
     public void saveUser(String name, String lastName, byte age) {
         try (Connection con = Util.connectToDB()) {
             PreparedStatement preparedStatement =
-                    con.prepareStatement("INSERT INTO  User  VALUES (?, ?, ?, ?)");
-            preparedStatement.setInt(1, id++);
-            preparedStatement.setString(2, name);
-            preparedStatement.setString(3, lastName);
-            preparedStatement.setInt(4, age);
+                    con.prepareStatement("INSERT INTO  User  VALUES (id, ?, ?, ?)");
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, lastName);
+            preparedStatement.setInt(3, age);
             preparedStatement.executeUpdate();
             System.out.println("User с именем " + name + " добавлен в  базу");
         } catch (SQLException e) {
@@ -55,7 +54,7 @@ public class UserDaoJDBCImpl implements UserDao {
     public void removeUserById(long id) {
         try (Connection con = Util.connectToDB();
              PreparedStatement preparedStatement = con.prepareStatement("DELETE FROM User WHERE id=?")) {
-            preparedStatement.setInt(1, (int) id);
+            preparedStatement.setLong(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
