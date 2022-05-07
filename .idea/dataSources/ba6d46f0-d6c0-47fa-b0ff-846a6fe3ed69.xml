@@ -946,73 +946,78 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     <collation id="273" parent="1" name="utf8mb4_zh_0900_as_cs">
       <Charset>utf8mb4</Charset>
     </collation>
-    <schema id="274" parent="1" name="information_schema">
+    <schema id="274" parent="1" name="game">
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </schema>
+    <schema id="275" parent="1" name="information_schema">
       <CollationName>utf8_general_ci</CollationName>
     </schema>
-    <schema id="275" parent="1" name="mysql">
+    <schema id="276" parent="1" name="mysql">
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <schema id="276" parent="1" name="performance_schema">
+    <schema id="277" parent="1" name="performance_schema">
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <schema id="277" parent="1" name="sakila">
+    <schema id="278" parent="1" name="sakila">
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <schema id="278" parent="1" name="sys">
+    <schema id="279" parent="1" name="sys">
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <schema id="279" parent="1" name="test">
+    <schema id="280" parent="1" name="test">
       <Current>1</Current>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <schema id="280" parent="1" name="world">
+    <schema id="281" parent="1" name="world">
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <user id="281" parent="1" name="mysql.infoschema">
+    <user id="282" parent="1" name="mysql.infoschema">
       <CanLogin>0</CanLogin>
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <user id="282" parent="1" name="mysql.session">
+    <user id="283" parent="1" name="mysql.session">
       <CanLogin>0</CanLogin>
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <user id="283" parent="1" name="mysql.sys">
+    <user id="284" parent="1" name="mysql.sys">
       <CanLogin>0</CanLogin>
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <user id="284" parent="1" name="root">
+    <user id="285" parent="1" name="root">
       <Host>localhost</Host>
       <Plugin>caching_sha2_password</Plugin>
     </user>
-    <table id="285" parent="279" name="user">
+    <table id="286" parent="280" name="info">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <column id="286" parent="285" name="id">
-      <AutoIncrement>5</AutoIncrement>
-      <DataType>int|0s</DataType>
+    <column id="287" parent="286" name="id">
+      <AutoIncrement>1</AutoIncrement>
+      <DataType>bigint unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="287" parent="285" name="name">
-      <DataType>varchar(255)|0s</DataType>
+    <column id="288" parent="286" name="data">
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="288" parent="285" name="lastName">
-      <DataType>varchar(255)|0s</DataType>
-      <Position>3</Position>
-    </column>
-    <column id="289" parent="285" name="age">
-      <DataType>int|0s</DataType>
-      <Position>4</Position>
-    </column>
-    <key id="290" parent="285" name="PRIMARY">
+    <index id="289" parent="286" name="id">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="290" parent="286" name="PRIMARY">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
+    </key>
+    <key id="291" parent="286" name="id">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>id</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>
