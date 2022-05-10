@@ -60,6 +60,7 @@ public class UserDaoHibernateImpl implements UserDao {
             session.beginTransaction();
             User userFromDB = session.get(User.class, id);
             session.remove(userFromDB);
+            session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
         }
